@@ -1,9 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Running on Repl.it
-
-Simply hit run once and start coding. Will hot reload the web view. 
-
 ## Running Scripts
 
 You can open a new shell window by hitting command+shift+S on macOS or control+shift+S (you can also access shortcuts from the `?` in the bottom right corner).
