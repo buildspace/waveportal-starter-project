@@ -17,7 +17,7 @@ export default function App() {
         </div>
 
         <div className="bio">
-        It's ya boy, Uche! Fuck with my wallet real quick.
+        It's ya boy, Uche! Fuck with my wallet real quick!
         </div>
 
         <button className="waveButton" onClick={wave}>
