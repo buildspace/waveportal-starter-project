@@ -30,5 +30,17 @@
   padding: 8px;
   border: 0;
   border-radius: 5px;
-  
+}
+
+.waveMessage {
+  resize: none;
+  font-size: 16px;
+  font-size: max(16px, 1em);
+  font-weight: bold;
+  overflow: hidden;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+.waveMessage::-webkit-input-placeholder {
+  text-align: center;
 }
