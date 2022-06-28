@@ -2,11 +2,23 @@ import React, { useEffect, useState } from 'react'
 import { ethers } from 'ethers'
 import './App.css'
 import abi from './utils/WavePortal.json'
+import { useForm } from 'react-hook-form'
 
 const App = () => {
-  const [currentAccount, setCurrentAccount] = useState('')
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      waveMessage: '',
+    },
+  })
 
-  const [inputText, setInputText] = useState('')
+  const waveMessage = watch('waveMessage')
+
+  const [currentAccount, setCurrentAccount] = useState('')
 
   const [allWaves, setAllWaves] = useState([])
 
@@ -107,7 +119,7 @@ const App = () => {
         let count = await wavePortalContract.getTotalWaves()
         setCurrentCount(count.toNumber())
         console.log('Retrieved total wave count...', count.toNumber())
-        const waveTxn = await wavePortalContract.wave(inputText)
+        const waveTxn = await wavePortalContract.wave(waveMessage)
         console.log('Mining...', waveTxn.hash)
 
         await waveTxn.wait()
@@ -136,24 +148,29 @@ const App = () => {
           I am farza and I worked on self-driving cars so that's pretty cool
           right? Connect your Ethereum wallet and wave at me!
         </div>
-        <form>
-          <label>
-            Message:
-            <input
-              type="text"
-              name="wave"
-              value={inputText}
-              onChange={(event) => setInputText(event.target.value)}
-            />
-          </label>
-          <input
-            type="submit"
-            value="wave"
-            onClick={() => {
+        <form
+          onSubmit={handleSubmit(() => {
+            try {
               wave()
-              setInputText('')
-            }}
+            } catch (error) {
+              console.log(error)
+            }
+          })}
+        >
+          <label>waveMessage: </label>
+          <input
+            {...register('waveMessage', {
+              required: '1文字以上入力してください',
+              minLength: {
+                value: 1,
+                message: 'テスト',
+              },
+            })}
+            placeholder="入力してください"
           />
+          <p>{waveMessage}</p>
+          <p>{errors.waveMessage?.message}</p>
+          <input type="submit" value="submit" />
         </form>
         <button className="waveButton" onClick={wave}>
           Wave at Me
