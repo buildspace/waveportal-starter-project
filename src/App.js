@@ -157,7 +157,7 @@ const App = () => {
             }
           })}
         >
-          <label>waveMessage: </label>
+          <label>waveMessage: テスト</label>
           <input
             {...register('waveMessage', {
               required: '1文字以上入力してください',
