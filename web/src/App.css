@@ -31,11 +31,41 @@
     border: 0;
     border-radius: 5px;
 }
-
 .stats {
+    display: flex;
+    flex-direction: column;
     margin-top: 16px;
-    max-height: 60%;
-    overflow-y: auto;
+    gap: 10px;
+}
+
+.stats__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.list__el {
+    background-color: oldlace;
+    padding: 8px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.form__label {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form__textarea {
+    resize: vertical;
+    max-height: 500px;
+    min-height: 50px;
 }
 
 button[disabled] {

@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 import { abi as contractABI } from './WavePortal.json';
 
-export const contractAddress = '0x380ab19038bdec44e4dcc9bbf570a58958b7513b';
+export const contractAddress = '0xb15177B993b5fd539e035A5d386F41B32341Bd22';
 
 export const getEthereumObject = () => window.ethereum;
 
@@ -37,7 +37,11 @@ export const findMetaMaskAccount = async () => {
 export const getWavePortalContract = () => {
     const provider = new ethers.providers.Web3Provider(getEthereumObject());
     const signer = provider.getSigner();
-    const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
+    const wavePortalContract = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        signer
+    );
 
     return wavePortalContract;
 };
